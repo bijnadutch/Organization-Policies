@@ -1,0 +1,175 @@
+# Security Incident Response Procedure
+**XXAXX — Supporting Document to Policy #8 (Incident Management Policy)**
+
+---
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Document Title | Security Incident Response Procedure |
+| Organization | XXAXX |
+| Document Owner | Chief Information Security Officer (CISO) |
+| Approved By | CISO (technical procedure; endorsed by Management Body) |
+| Classification | Internal |
+| Version | 1.0 |
+| Effective Date | [DATE] |
+| Next Review Date | [DATE + 12 months] |
+| Review Cycle | Annual, or upon material change to risk, regulation, or organization |
+| Parent Policy | Incident Management Policy (Policy #8) |
+
+### Revision History
+
+| Version | Date | Author | Summary of Changes |
+|---|---|---|---|
+| 1.0 | [DATE] | CISO | Initial version — split out from Incident Management Policy v1.0 to isolate security-specific response mechanics |
+
+---
+
+## Table of Contents
+
+1. [Purpose](#1-purpose)
+2. [Scope](#2-scope)
+3. [Definitions](#3-definitions)
+4. [Procedure](#4-procedure)
+5. [Roles and Responsibilities](#5-roles-and-responsibilities)
+6. [Compliance and Enforcement](#6-compliance-and-enforcement)
+7. [Exceptions](#7-exceptions)
+8. [Review and Update](#8-review-and-update)
+9. [Related Documents](#9-related-documents)
+10. [Appendix A — Regulatory & Standards Mapping](#appendix-a--regulatory--standards-mapping)
+
+---
+
+## 1. Purpose
+
+This document defines the technical and procedural detail XXAXX follows when responding to **security incidents** specifically — extending the common lifecycle set out in the Incident Management Policy with the additional rigor security incidents require: severity classification against the NIS2 Significant Incident threshold, Security Incident Response Team (SIRT) activation, containment/eradication/recovery techniques, evidence preservation, forensics, and the handoff into regulatory notification.
+
+## 2. Scope
+
+This Procedure applies to all confirmed or suspected security incidents affecting XXAXX's information, systems, networks, or services, including: malware and ransomware, unauthorized access or account compromise, data breaches, denial-of-service attacks, insider threats, business email compromise, and security incidents originating from or affecting third parties/suppliers. It applies to the Security Incident Response Team and all staff supporting a security incident response.
+
+## 3. Definitions
+
+- **Security Incident**: As defined in the Incident Management Policy — an incident arising from a security compromise, policy violation, or malicious activity.
+- **SIRT (Security Incident Response Team)**: The cross-functional team activated to respond to a security incident.
+- **Indicator of Compromise (IoC)**: Forensic artifact (e.g., file hash, IP address, domain) suggesting a system has been compromised.
+- **Chain of Custody**: Documented record of the handling of evidence from collection through to its use in investigation, legal, or regulatory proceedings.
+- **Significant Incident**: An incident meeting the NIS2 Article 23(3) threshold — one that has caused or is capable of causing severe operational disruption or financial loss, or that affects other persons by causing considerable material or non-material damage — triggering mandatory notification under the NIS2 Incident Reporting Procedure.
+
+## 4. Procedure
+
+### 4.1 Security Incident Classification
+
+Upon confirmation that an incident (logged under the Incident Management Policy) is security-related, the Information Security Team classifies it using severity criteria covering: scope of systems/accounts affected, sensitivity of data involved (per the Data Classification & Handling Policy), evidence of data exfiltration, whether the threat actor retains access, and potential regulatory/contractual notification obligations. The resulting severity (Low / Medium / High / Critical) determines SIRT activation and escalation, and is explicitly assessed against the Significant Incident threshold.
+
+### 4.2 SIRT Activation
+
+For security incidents classified Medium or above, the Security Incident Response Team (SIRT) is activated, led by a designated Incident Commander (typically the CISO or a delegate). The SIRT draws on Information Security, IT Operations, relevant System/Application Owners, Legal, Communications, and HR as needed. The CISO is informed of all High/Critical security incidents without delay; the management body is informed of Critical security incidents and any incident assessed as meeting the Significant Incident threshold.
+
+### 4.3 Containment
+
+The SIRT prioritizes containment actions to limit further harm while preserving evidence, which may include: isolating affected systems from the network, disabling or resetting compromised accounts and credentials, blocking malicious IP addresses/domains at the network perimeter, revoking compromised API keys or certificates, and, where necessary, taking affected services offline in a controlled manner. Containment actions and their timing are logged.
+
+### 4.4 Evidence Preservation and Forensics
+
+Where an incident may involve unlawful activity, regulatory reporting, insurance claims, or potential legal proceedings, evidence is preserved before remediation where feasible, including: system memory and disk images, relevant log data (see the Logging & Monitoring Policy), network traffic captures, and a documented chain of custody for all collected artifacts. Forensic investigation is conducted by qualified internal staff or engaged external specialists, proportionate to incident severity, to establish root cause, scope, and indicators of compromise.
+
+### 4.5 Eradication
+
+Once contained and sufficiently investigated, the root cause is eradicated from the environment — for example, removing malware, closing the exploited vulnerability (coordinated with the Vulnerability Management Policy), rotating all potentially compromised credentials and keys (coordinated with the Cryptography & Key Management Policy), and rebuilding compromised systems from known-good images rather than assuming a compromised system is clean after remediation alone.
+
+### 4.6 Recovery
+
+Systems are restored to normal operation only after verification that the root cause has been addressed and no indicators of compromise remain, in coordination with the Backup & Disaster Recovery Policy where restoration from backup is used. Recovery is phased and monitored, with heightened logging/alerting on restored systems for a defined period following reinstatement.
+
+### 4.7 Indicator of Compromise Sharing
+
+Where appropriate and consistent with confidentiality obligations, XXAXX shares relevant indicators of compromise with trusted parties (e.g., sector ISACs, national CSIRT, affected suppliers) to support broader detection and defense, and monitors for the same IoCs across its own environment.
+
+### 4.8 Regulatory Notification Handoff
+
+As soon as an incident is assessed as meeting, or potentially meeting, the Significant Incident threshold, the CISO initiates the NIS2 Incident Reporting Procedure in parallel with ongoing technical response — regulatory notification timelines run from the point of becoming aware of the incident and are not paused pending completion of containment or investigation.
+
+### 4.9 Post-Incident Review (Security-Specific)
+
+Following resolution of any Medium, High, or Critical security incident, a post-incident review documents: full timeline, root cause, initial access vector, scope of compromise, effectiveness of detection and response, and specific control gaps that allowed the incident to occur or escalate. Action items are tracked to closure via the risk register and, where relevant, fed back into the Secure Development Policy, Vulnerability Management Policy, or Access Control Policy.
+
+### 4.10 Testing
+
+Security-specific playbooks (e.g., ransomware, data breach, business email compromise, insider threat) are tested at least annually through tabletop exercises or simulated attacks, involving the SIRT and relevant stakeholders including Legal and Communications.
+
+## 5. Roles and Responsibilities
+
+| Role | Responsibility |
+|---|---|
+| CISO / Incident Commander | Leads SIRT activation and technical response decisions; informs management body for Critical/Significant incidents; initiates regulatory notification handoff. |
+| Security Incident Response Team (SIRT) | Executes containment, eradication, recovery, and forensic activities; cross-functional membership as required by the incident. |
+| Information Security Team | Performs technical investigation, forensics, and IoC analysis; maintains security playbooks. |
+| IT Operations | Executes technical containment and recovery actions on affected infrastructure. |
+| System / Application Owners | Support investigation and verify system integrity before recovery; participate in post-incident review. |
+| Legal | Advises on evidence handling, privilege, regulatory, and law enforcement engagement. |
+| Communications | Manages internal/external messaging in coordination with the Incident Commander and Legal. |
+
+## 6. Compliance and Enforcement
+
+Failure to follow evidence preservation requirements, unauthorized remediation actions taken outside SIRT coordination during an active Critical/High incident, or failure to escalate a potential Significant Incident promptly, is treated as a serious policy breach. Compliance is verified through post-incident review records and internal audit.
+
+### 6.1 Key Metrics
+
+The CISO tracks the following metrics on an ongoing basis to monitor the health and effectiveness of this Procedure, reports them to management at defined intervals, and uses trends to drive improvement:
+
+| Metric | Description | Target / Direction |
+|---|---|---|
+| Mean Time to Detect (MTTD) | Average time from incident occurrence to detection | Downward trend |
+| Mean Time to Contain (MTTC) | Average time from detection to containment | Downward trend; within priority-based targets |
+| Mean Time to Eradicate | Average time from containment to confirmed removal of root cause | Downward trend |
+| Mean Time to Recover (MTTR) | Average time from eradication to verified restoration of normal service | Downward trend |
+| SIRT Activation Time | Time from classification to SIRT activation for Medium+ incidents | Within defined activation SLA |
+| Significant Incident Escalation Timeliness | Time from awareness to initiation of the NIS2 Incident Reporting Procedure | 100% within the Art. 23 early-warning window |
+| Incident Recurrence Rate | Proportion of incidents sharing a root cause with a prior incident within 12 months | Downward trend |
+| Post-Incident Action Closure Rate | Proportion of post-incident review action items closed within agreed timelines | Upward trend / target ≥ 90% |
+| Evidence Chain-of-Custody Exceptions | Number of incidents with a documented break or gap in evidence handling | Zero / downward trend |
+| Playbook Test Coverage | Proportion of defined security playbooks tested within the last 12 months | 100% |
+| Incident Volume by Severity | Count of security incidents by severity rating, per period | Trend monitored for anomalies |
+
+These metrics are distinct from, and reported alongside, the broader incident management metrics (MTTD/MTTR, SLA compliance) tracked under the Incident Management Policy, providing a security-specific view of response performance.
+
+## 7. Exceptions
+
+Deviations from standard containment/eradication steps (e.g., where isolating a system would itself cause unacceptable business disruption) must be approved by the Incident Commander, documented with rationale and compensating measures.
+
+## 8. Review and Update
+
+This Procedure is reviewed at least annually, following any Critical or Significant security incident, and following each security-specific testing exercise.
+
+## 9. Related Documents
+
+- Incident Management Policy (Policy #8)
+- NIS2 Incident Reporting Procedure (Policy #9)
+- Risk Management Policy (Policy #1)
+- Data Classification & Handling Policy (Policy #3)
+- Access Control Policy (Policy #4)
+- Supplier & Third-Party Security Policy (Policy #5)
+- Vulnerability Management Policy (Policy #7)
+- Backup & Disaster Recovery Policy (Policy #11)
+- Cryptography & Key Management Policy (Policy #20)
+- Logging & Monitoring Policy (Policy #24)
+- Security Incident Playbooks (ransomware, data breach, BEC, insider threat)
+
+---
+
+## Appendix A — Regulatory & Standards Mapping
+
+| Topic / Section | NIS2 Directive | ISO/IEC 27001:2022 | ISO/IEC 27002:2022 | NIST CSF v2.0 |
+|---|---|---|---|---|
+| Security incident classification & Significant Incident threshold | Art. 21(2)(b); Art. 23(3) | Cl. 8.1 | A.5.25 (assessment and decision on info security events) | RS.MA-02 |
+| SIRT activation | Art. 21(2)(b) | Cl. 8.1 | A.5.24, A.5.26 (response to info security incidents) | RS.MA-01, RS.MA-03 |
+| Containment | Art. 21(2)(b) | Cl. 8.1 | A.5.26 | RS.MI-01 |
+| Evidence preservation & forensics | Art. 21(2)(b) | Cl. 8.1 | A.5.28 (collection of evidence) | RS.AN-03 |
+| Eradication (incl. vulnerability/credential remediation) | Art. 21(2)(b)/(e) | Cl. 8.1 | A.5.26, A.8.8 | RS.MI-02 |
+| Recovery & restoration | Art. 21(2)(b)/(c) | Cl. 8.1 | A.5.29, A.5.30, A.8.13 | RC.RP |
+| Indicator of compromise sharing | Art. 21(2)(b) | Cl. 8.1 | A.5.6 (contact with special interest groups) | RS.CO-05 |
+| Regulatory notification handoff (cross-ref. Policy #9) | Art. 23(1)-(4) | Cl. 8.1 | A.5.24, A.6.8 | RS.CO-02 |
+| Security-specific post-incident review | Art. 21(2)(b)/(f) | Cl. 10.1 | A.5.27 (learning from info security incidents) | RC.RP, ID.IM |
+| Testing of security playbooks | Art. 21(2)(b)/(c) | Cl. 9.1 | A.5.24 | ID.IM-04 |
